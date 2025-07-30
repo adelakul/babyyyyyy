@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>For My Queen – Girlfriend's Day</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #ffeef0 0%, #ffe8eb 50%, #fff0f2 100%);
+      color: #2d3748;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* Animated background hearts */
+    .hearts-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .heart {
+      position: absolute;
+      color: rgba(255, 107, 129, 0.1);
+      font-size: 20px;
+      animation: float 15s infinite linear;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    header {
+      background: linear-gradient(135deg, #ff6b81 0%, #ee5a73 50%, #e74c6e 100%);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hearts" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><text x="10" y="15" text-anchor="middle" fill="rgba(255,255,255,0.1)" font-size="12">💖</text></pattern></defs><rect width="100" height="100" fill="url(%23hearts)"/></svg>');
+      animation: slide 20s linear infinite;
+    }
+    
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-20px); }
+    }
+    
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2em, 5vw, 3.5em);
+      font-family: 'Dancing Script', cursive;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes glow {
+      from { text-shadow: 0 2px 4px rgba(0,0,0,0.3), 0 0 10px rgba(255,255,255,0.2); }
+      to { text-shadow: 0 2px 4px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.4); }
+    }
+    
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+      position: relative;
+      z-index: 1;
+      opacity: 0.95;
+    }
+    
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+    }
+    
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(255, 107, 129, 0.1), 0 1px 8px rgba(0,0,0,0.05);
+      padding: 35px;
+      margin-bottom: 35px;
+      border: 1px solid rgba(255, 107, 129, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 107, 129, 0.1), transparent);
+      transition: left 0.5s;
+    }
+    
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(255, 107, 129, 0.15), 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .card:hover::before {
+      left: 100%;
+    }
+    
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: #ff6b81;
+      font-family: 'Dancing Script', cursive;
+      font-size: 2em;
+      font-weight: 600;
+      position: relative;
+    }
+    
+    .card h2::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #ff6b81, #ee5a73);
+      border-radius: 2px;
+    }
+    
+    .chat {
+      font-style: italic;
+      background: linear-gradient(135deg, #fdf1f2 0%, #fce8ea 100%);
+      padding: 25px;
+      border-radius: 20px;
+      margin-top: 15px;
+      border-left: 4px solid #ff6b81;
+      position: relative;
+      line-height: 1.8;
+      font-size: 1.05em;
+    }
+    
+    .chat::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      left: 15px;
+      font-size: 4em;
+      color: #ff6b81;
+      opacity: 0.3;
+      font-family: serif;
+    }
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .gallery img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .gallery img:hover {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 15px 35px rgba(255, 107, 129, 0.3);
+      z-index: 10;
+      position: relative;
+    }
+    
+    .audio-container {
+      background: linear-gradient(135deg, #ff6b81, #ee5a73);
+      padding: 25px;
+      border-radius: 20px;
+      margin-top: 15px;
+      text-align: center;
+    }
+    
+    .audio-container p {
+      color: white;
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+    
+    audio {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 25px;
+      outline: none;
+    }
+    
+    audio::-webkit-media-controls-panel {
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 25px;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 1em;
+      color: #666;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      margin-top: 40px;
+    }
+    
+    footer::before {
+      content: '💕';
+      display: block;
+      font-size: 2em;
+      margin-bottom: 10px;
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    
+    a {
+      color: #ff6b81;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    a:hover {
+      color: #ee5a73;
+    }
+    
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      header {
+        padding: 40px 15px;
+      }
+      
+      section {
+        padding: 30px 15px;
+      }
+      
+      .card {
+        padding: 25px;
+        margin-bottom: 25px;
+      }
+      
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+      
+      .gallery img {
+        height: 200px;
+      }
+    }
+    
+    /* Scroll animations */
+    .card {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hearts-bg" id="heartsContainer"></div>
+
+  <header>
+    <h1>To the One Who Stole My Peace 💌</h1>
+    <p>Happy Girlfriend's Day, My Love</p>
+  </header>
+
+  <section>
+    <div class="card">
+      <h2>Our Sweet Moments 💬</h2>
+      <div class="chat">
+     <br><br>
+        "i know that things have been crazy lately and i know that its alot right mama
+        i just want to say somethings for my beautiful baby, the most beatiful"<br><br>
+        — The little moments where we were real with each other. 
+        The moments we walked to sailing club to officers Quarter, The moment when i see you smile and i just cant help but be happy
+        The moment when i feel down and i just hear you say i love you and everything feels light and solved
+        The moment when i hug you mama
+        The moment you kiss me with your never forgettting lips, i still feel like i cn feel theme on mine, i cant help but smile when i remember.
+        <br><br><strong>"These are my treasures"</strong>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>What I See in You 💖</h2>
+      <p>
+        You're not just beautiful, you are smart, intelligent, strong-willed, so pretty, cant even be compared, very stubborn, you're my safest place, my joy in silence, and my heartbeat even from afar.
+        Even when you're not okay, I see you. I see how strong you are, even when you don't feel it.
+        I'll never give up on you. I'll never stop choosing you yes i will keep on choosing you every day my babyyyyyyyyyyyyy.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Some of Our Memories 📸</h2>
+      <div class="gallery">
+        <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1753914184/crasy_zleqty.jpg" alt="My Queen Too Fine Aswear, I love you so much">
+        <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1753913762/queen_okj3ug.jpg" alt="See Beauty">
+        <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1753913085/bby_loydpn.jpg" alt="Her Beautiful Smile">
+        <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1753913050/ussssssssssssss_whwtmy.jpg" alt="Memory 1">
+        <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1753913134/love_yhshxs.jpg" alt="Memory 2">
+        <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1753913001/us_blxa0l.jpg" alt="memory 3">
+        <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1753913068/ussss_asfhhq.jpg" alt="Memory 4">
+        <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1753913125/mine_love_kbc1kl.jpg" alt="Memory 5">
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>A Little Soundtrack for Us 🎵</h2>
+      <div class="audio-container">
+        <p>This one is ours. Let it play, close your eyes, and feel me there with you:</p>
+        <audio controls autoplay loop>
+          <source src="https://res.cloudinary.com/dgtybiflg/video/upload/v1753914614/Ed_Sheeran_-_Perfect_h9un5d.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>
+    Created with love by your man who still gets butterflies every time he thinks of you. ❤️
+  </footer>
+
+  <script>
+    // Create floating hearts animation
+    function createHearts() {
+      const heartsContainer = document.getElementById('heartsContainer');
+      const heartSymbols = ['💖', '💕', '💗', '💓', '💝', '💘'];
+      
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+        
+        heartsContainer.appendChild(heart);
+        
+        setTimeout(() => {
+          heart.remove();
+        }, 15000);
+      }, 3000);
+    }
+    
+    // Image modal functionality
+    document.querySelectorAll('.gallery img').forEach(img => {
+      img.addEventListener('click', function() {
+        const modal = document.createElement('div');
+        modal.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.9);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 1000;
+          cursor: pointer;
+        `;
+        
+        const modalImg = document.createElement('img');
+        modalImg.src = this.src;
+        modalImg.style.cssText = `
+          max-width: 90%;
+          max-height: 90%;
+          border-radius: 20px;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        `;
+        
+        modal.appendChild(modalImg);
+        document.body.appendChild(modal);
+        
+        modal.addEventListener('click', () => {
+          document.body.removeChild(modal);
+        });
+      });
+    });
+    
+    // Initialize animations
+    createHearts();
+    
+    // Smooth scroll behavior
+    document.documentElement.style.scrollBehavior = 'smooth';
+  </script>
+
+</body>
+</html>
